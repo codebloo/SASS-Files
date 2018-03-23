@@ -1,0 +1,484 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/utilities/general/clearfix";
+@import "susy";
+$susy: (
+   columns: 12,  // The number of columns in your grid
+   gutters: 1/4, // The size of a gutter in relation to a single column
+	container: 90%,
+	global-box-sizing: border-box
+	);
+	
+
+// Breakpoints
+$mobile-landscape: 30rem; // 480px
+$tablet: 40rem; // 640px
+$tablet-wide: 48rem; // 768px
+$desktop: 64rem; // 1024px
+$widescreen: 71.25rem; // 1140px	   
+@include border-box-sizing;
+
+
+/* Colours
+***********************/
+
+$mine:#010708; //top utils
+$white: #ffffff;
+$flamingo:#f64d2e; //orange
+$chalice:#a0a0a0; //primary text
+$coal:#282828; //footer
+$slate: #e5e5e5; //lines
+
+/* Mixins
+***********************/
+
+@mixin scalepic {
+ display:block;
+ height:auto;
+ max-width:100%;}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;}
+
+
+@mixin flexcontent{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	p{padding-bottom:20px;	}
+	}
+
+@mixin center_content {
+ @include span(8 of 12); 
+ margin-left: span(2 of 12);
+}	
+
+
+/* #Clearing
+================================================== */
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+/* #Global Content
+================================================== */
+body{
+	background-color:$coal;
+	color:#fff;
+	font-family:'Raleway', serif;
+	font-size:14px;
+	line-height:22px;}
+
+	.scale-with-grid{@include scalepic();}	
+	
+a{
+	color:$flamingo;
+	text-decoration:none;}
+
+h2{
+	color:$coal;
+	font-family:'Montserrat', sans-serif;
+	font-size:18px;}
+	
+.easy-footnote-title h4,	
+h3.section_title,
+.crp_related  h3{
+	background:url(../images/underline.png) left bottom no-repeat;
+	color:$coal;
+	font-family:Playfair Display;
+	font-size:18px;
+	font-weight:700;
+	margin-bottom:10px;
+	padding-bottom:15px;
+	text-transform:uppercase;}	
+	
+
+#header-wrap,
+#content-wrap,
+header,
+footer{
+clear:both;
+position:relative;}
+
+.utils,
+header,
+#page,
+footer{@include container;}
+
+button,
+.button{
+	background-color:$flamingo;
+	border:none;
+	color:$white;
+	display:block;
+	float:left;
+	margin-bottom:30px;
+	padding:5px 20px;
+	text-align:center;}
+	.button:hover{background-color:$coal;}
+	.button{color:$white;}
+button:focus {outline:0;}
+
+
+/* #Utils
+================================================== */
+#utils-wrap{
+backgroud-color:#mine;
+color:#white;
+font-family:'Montserrat', sans-serif;
+font-size:11px;
+padding:10px 0;}
+
+#utils-wrap ul{text-align:center;}
+#utils-wrap ul li{display:inline;}
+#utils-wrap ul li a{
+	border-left: 1px solid $white;
+	color:$white;
+   margin: 0 0 0 10px;
+   padding: 0 0 0 10px;}
+#utils-wrap ul li.subscribe a{color:$flamingo;}
+#utils-wrap ul li:first-child a{border-left:none;}
+
+.date_time{
+text-align:center;
+text-transform:uppercase;
+@include span(12);}
+.utils-nav{@include span(12);}
+
+/* #Header
+================================================== */
+#header-wrap{
+	background-color:$white;
+	padding:20px 0;
+	@include clearfix;}
+header{@include clearfix;}
+header a img{
+	display:block;
+	margin:0 auto;}
+
+/* #Nav
+================================================== */
+#nav-wrap{display:none;}
+
+/* #General Content Wrap
+================================================== */	
+#content-wrap{
+	background-color:$white;
+	color:$coal;
+	padding: 15px 0 40px 0;
+	@include clearfix;}	
+	
+.pagination{clear:both;}	
+
+/* #Aside  & content layout
+================================================== */
+aside{display:none;}	
+.news_columns{@include span(12);}	
+	
+/* #Footer
+================================================== */	
+footer{
+	font-family:'Montserrat', sans-serif;
+	font-size:11px;
+	padding:10px 0;}	
+.copyright{@include span(12);}
+.copyright img{margin:0 auto;}
+.copyright p{
+	color:$flamingo;
+	text-align:center;}
+.footer_nav{@include span(12);}	
+	
+footer ul{text-align:center;}
+footer ul li{display:inline;}
+footer ul li a{
+		border-left: 1px solid $white;
+		color:$white;
+	   margin: 0 0 0 10px;
+	   padding: 0 0 0 10px;}
+footer ul li.subscribe a{color:$flamingo;}	
+footer ul li:first-child a{border-left:none;}
+
+/* #Post Details
+================================================== */
+.post{clear:both;}
+span.post_author{
+	color:$mine;
+	display:block;
+	font-family:'Montserrat', sans-serif;
+	font-size:12px;
+	font-weight:700;
+	padding-bottom: 15px;
+	text-transform:uppercase;}
+	
+.post h2{padding-bottom:5px;}	
+.post .blog_meta{padding-bottom:15px;}	
+span.post_date{margin-right:20px;}
+.post-ratings{padding: 10px 0;}
+
+.page_content p,
+.post_detail_wrapper p{padding-bottom:20px;}
+.post_cats span{margin-right:3px;}
+
+.footnote_plugin_link,
+.footnote_plugin_tooltip_text{color:$flamingo;}
+.crp_related {
+	border-top:1px solid $slate;
+	padding-top:20px;
+	@include clearfix;}
+.easy-footnotes-wrapper{
+	border-bottom:1px solid $slate;
+	margin-bottom: 30px;
+	padding-bottom:20px;
+	@include clearfix;}
+	
+.crp_related ul li{@include span(12);}
+#crp_related p{padding-top:20px;}
+
+/* #Comments
+================================================== */
+.comments_wrap{margin-bottom:30px;}
+.comment-form-comment label{display:block;}
+#commentform  button{
+	color:$white;
+	font-family:'Montserrat', sans-serif;
+	font-size:18px;}
+#commentform textarea{
+	min-height:300px;
+	width:100%;}
+#respond {
+    margin: 2em 0;
+    position: relative;
+    text-align: left;
+    padding: 2em;
+    background: #fff none repeat scroll 0 0;
+    border: 3px solid #333;
+    position: relative;}
+#respond::before, .is-comment-form-border-arrow #respond::after {
+    border: medium solid transparent;
+    bottom: 100%;
+    content: " ";
+    height: 0;
+    left: 40px;
+    pointer-events: none;
+    position: absolute;
+    width: 0;}
+#respond::before {
+    border-color: rgba(51, 51, 51, 0) rgba(51, 51, 51, 0) #333333;
+    border-width: 10px;
+    margin-left: -10px;}
+#respond::after {
+    border-color: rgba(255, 255, 255, 0) rgba(255, 255, 255, 0) #ffffff;
+    border-width: 6px;
+    margin-left: -6px;}
+#reply-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin: 0;
+    text-transform: uppercase;}
+#reply-title small a {
+    display: inline-block;
+    margin-left: 1em;}
+
+.comment_header{padding-top:40px;}
+.comment-list li .avatar {
+    background: #fff none repeat scroll 0 0;
+    @include border-radius(50%);
+    float: left;
+    margin: 0 10px 0 0;}
+.comment-body,
+.comment_content {
+    border: 1px solid #dfdfdf;
+    border-radius: 3px;
+    font-size: 15px;
+    line-height: 1.5em;
+    margin: 5px 0 0;
+    padding: 10px 20px 20px;}
+.comment_content p:last-of-type{padding-bottom:0;}
+.comment_author,
+.comment-author{
+    display: block;
+    font-family: "Montserrat",sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;}
+.comment_meta{display:block;}
+
+/* #Homepage Columns
+================================================== */
+.latest_opinions{@include span(12);}
+.latest_ideas{@include span(12);}
+
+/* #Forms 
+================================================== */
+.gform_wrapper .gform_body  .top_label div.ginput_container{margin-top:0;}
+.gform_wrapper .gform_body label.gfield_label {
+    color: $coal;
+    font-weight: 400;}
+.gform_wrapper .gform_footer .gform_button{
+	border:none;
+	margin-right:0;} 
+	
+/* #Archive and Rating Pages
+================================================== */
+	h3.main_title{
+		background:none;
+		text-align:center;}	
+	
+
+/* #RESPONSIVENESS -- Mobile First Above -- Tablet Sizes Below
+=================================================================== */	
+/* Larger than phablet */
+	@media (min-width: 769px) {
+	
+	/* #Utils
+	================================================== */
+	#utils-wrap ul{text-align:right;}
+
+	.date_time{
+	text-align:left;
+	@include span(6);}
+	.utils-nav{@include span(6 last);}
+
+	/* #Header
+	================================================== */
+	#header-wrap{
+		background-color:$white;
+		padding:20px 0;
+		@include clearfix;}
+	header{
+		padding-bottom:60px;
+		@include clearfix;}
+	header a img{
+		display:block;
+		margin:0 auto;}
+
+	/* #Nav
+	================================================== */
+	#nav-wrap{
+		border-bottom:1px solid $slate;
+		border-top:1px solid $slate;
+		display:block;
+		font-family:'Montserrat', sans-serif;
+		@include clearfix;}
+	.menu-global-container{
+		 float: left;
+		width:calc(100% - 210px);}
+	nav{
+	border-left:1px solid $slate;
+	@include container;}
+	nav ul li{
+		display:block;
+		float:left;}
+	nav ul li a{
+	border-right:1px solid $slate;
+	color:$mine;
+	display:block;
+	font-size:16px;
+	padding: 20px 5px;}
+	
+		nav ul li:hover a{color:$flamingo;}
+
+	.search_box{
+		float:right;
+		width:210px;}
+	input.search-input{
+      border: none;
+      float: left;
+      font-family: "Montserrat",sans-serif;
+      font-size: 16px;
+      padding: 20px 4px;
+      width: calc(100% - 50px);}
+	button.search-submit{
+		background:none;
+      border: none;
+		color:$mine;
+      display: block;
+      float: right;
+      font-size: 22px;
+		margin-bottom:0;
+      padding: 17px 0;
+      text-align: center;
+      width: 50px;}
+
+	/* #Aside  & content layout
+	================================================== */
+	aside{
+		display:block;
+		@include span(2);}	
+	.news_columns{
+	  padding-left: 30px;
+		@include span(10 last);}	
+
+	.list-custom-taxonomy-widget ul li{
+		border-bottom:1px solid $slate;
+		color:$coal;
+		clear:both;
+		display: flex;
+		justify-content: space-between;
+		padding:15px 0;}
+		.list-custom-taxonomy-widget ul li a{color:$coal;}
+		.list-custom-taxonomy-widget ul li a:before{
+			content:'»';
+			padding-right: 4px;}
+		.list-custom-taxonomy-widget ul li:hover,
+		.list-custom-taxonomy-widget ul li:hover a{color:$flamingo;}
+	
+	/* #Footer
+	================================================== */	
+	.copyright{@include span(6);}
+	.copyright img{margin:0;}
+	.copyright p{text-align:left;}
+	.footer_nav{@include span(6 last);}	
+	footer ul{text-align:right;}
+
+	/* #Homepage Columns
+	================================================== */
+	.latest_opinions{@include span(6);}
+	.latest_ideas{@include span(6 last);}
+	
+	/* #Archive and Rating Pages
+	================================================== */
+	h3.main_title{text-align:left;}
+	
+	.crp_related ul li{width: span(4);}
+	.crp_related ul li{
+		display:block;
+		padding:0 20px 20px 0;}
+	
+	#footnote_references_container{padding-bottom:30px;}	
+	.crp_title{
+		font-family: "Montserrat",sans-serif;
+	    font-size: 18px;}	
+	.crp_author{
+	   color: $mine;
+	   display: block;
+	   font-family: "Montserrat",sans-serif;
+	   font-size: 12px;
+	   font-weight: 700;
+	   padding-bottom: 15px;
+	   text-transform: uppercase;}	
+		
+		}
+
+@media (min-width: $desktop) {nav ul li a{padding:20px 12px;}}
+@media (min-width: $widescreen) {nav ul li a{padding:20px 30px;}}
+@media (min-width: 769px) and (max-width: 805px) { 
+	.menu-global-container{ width: calc(100% - 148px);}
+	.search_box{width:148px;} }
+
+@media (min-width: 804px) and (max-width: 837px) { 
+	.menu-global-container{ width: calc(100% - 180px);}
+	.search_box{width:180px;} }

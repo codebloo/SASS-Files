@@ -1,0 +1,694 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/utilities/general/clearfix";
+@import "susy";
+$susy: (
+   columns: 12,  // The number of columns in your grid
+   gutters: 1/4, // The size of a gutter in relation to a single column
+	container: 90%,
+	global-box-sizing: border-box
+	);
+	
+
+// Breakpoints
+$mobile-landscape: 30rem; // 480px
+$tablet: 40rem; // 640px
+$tablet-wide: 48rem; // 768px
+$desktop: 64rem; // 1024px
+$widescreen: 71.25rem; // 1140px	
+     
+@include border-box-sizing;
+
+/* Colours
+***********************/
+
+$skyblue: #7ad1ec;
+$flamingo:#f15725;
+
+$black:#000000;
+$white: #ffffff;
+$bombay: #adb1b4;
+$oslo: #909599;
+$heavymetal:#242625;
+$capecod:#2E302F;
+$slate:#8a8e91;
+
+/* Mixins
+***********************/
+
+@mixin scalepic {
+ display:block;
+ height:auto;
+ max-width:100%;}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;}
+			 
+.leck{font-family: 'Leckerli One', cursive;}			 
+			 
+			 
+/* #Clearing
+================================================== */
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+/* General
+***********************/	
+	
+body{
+	color:$oslo;
+	font-family: 'Roboto', sans-serif;
+	font-size:14px;
+	line-height:21px;}		
+a,
+a:visited,
+a:hover{
+	color:$flamingo;
+	text-decoration:none;}	
+
+p{padding-bottom:20px;} 
+
+header,
+nav,
+main,
+footer{
+	clear:both;
+	position:relative;}
+
+	.content_column{
+		padding-bottom:20px;
+		@extend .clearfix;
+		@include span(12);}
+		
+.content_inner{
+	border-bottom: 1px dashed $bombay;
+	margin-bottom:20px;
+	padding-bottom:10px;
+	@extend .clearfix;}	
+
+.container{@include container;}
+
+img{
+	@include scalepic;
+	@include border-radius(3px);}
+
+h2{
+	font-size:26px;
+	font-weight:800;
+	line-height:32px;
+	margin-bottom:20px;
+	}
+h3{
+	font-family:roboto;
+	font-weight:600;
+	text-transform:uppercase;}
+
+button,
+.button,
+a.button{
+	background-color:$flamingo;
+	border:none;
+	clear:both;
+	color:$white;
+	display:block;
+	float:left;
+	padding:10px 20px;
+	text-align:center;
+	transition: background-color ease 0.3s;
+	@include border-radius(3px);}
+	.button:hover,
+	a.button:hover{background-color:$skyblue;}
+
+/* Larger than phablet */
+@media (min-width: $tablet) {
+	.content_column{
+		padding-bottom:30px;
+		@include span(8);}
+		
+	.content_inner{
+		margin-bottom:40px;
+		padding-bottom:30px;}
+			
+	h2{
+		font-size:46px;
+		font-weight:800;
+		line-height:52px;
+		}
+		
+	#content-wrap{padding-top:40px;}			
+	
+	}
+
+
+/* Header
+***********************/
+#header-wrap{background-size:cover;}
+header{
+	height:300px;
+	@include container;}
+
+.logo{
+	margin-top:20px;
+	@include span(6);}
+.logo img{@include scalepic;}
+
+/* Nav
+***********************/
+nav {
+	background-image:url(../images/handmadepaper.png);
+	margin-bottom:70px;
+	 @extend .clearfix;}
+nav ul{margin-bottom:0;}
+nav ul li{
+	border-right:1px solid $white;
+	display:block;
+	float:left;
+	position:relative;}
+nav ul li a{
+	color:$oslo;
+	display:block;
+	font-size:14px;
+	font-weight:800;
+	padding:20px;
+	text-decoration:none;
+	text-transform:uppercase;
+	transition: all 0.3s ease;}	
+	
+	nav ul li:hover,
+	nav ul li:hover a,
+	nav ul li a:hover,
+	nav ul li.current_page_item a,
+	.single-recipes nav ul li.menu-item-has-children a{
+		background-color:$flamingo;
+		color:$white;}
+	nav ul li ul{
+		background-color:$flamingo;
+		color:$white;
+		display:none;
+		position:absolute;
+		transition: all 0.2s ease;
+		width: 160px;
+		z-index: 99;}
+		nav ul li:hover ul{display:block;}
+		nav ul li ul li{
+			border-right:none;
+			clear:both;
+			display:block;
+			width: 100%;}
+		nav ul li ul li a{
+			color:$white;
+			padding: 10px 20px;}	
+			nav ul li ul li:hover a{background-color:rgba(0,0,0,0.2);}
+
+#header-wrap,
+nav,
+.sticky-wrapper{z-index:999!important;}	
+
+/* Search Bar */
+
+.search_box{
+	background-color:$white;
+	border:1px solid $oslo;
+	float:right;
+	margin: 12px 0;}
+.search_box input{
+	border:none;
+	padding: 8px 10px;}
+.search_box button{
+	background-color:transparent;
+	border:none;
+   color: $oslo;
+   float: right;
+	padding:8px;}	
+
+/* Footer
+***********************/
+
+footer {background-color:$skyblue;}
+footer h3 {
+	color:$white;
+   font-size: 20px;
+    margin-bottom: 12px;}
+footer .ctas{	
+	padding:40px 0;
+	@include container;}
+footer .cta_block{
+	clear:both;
+	margin-bottom:20px;
+	@include span(12);}
+
+	/* Larger than phablet */
+	@media (min-width: $tablet) {
+		footer .cta_block{
+			clear:none;
+			margin-bottom:0;
+			@include span(4);}
+			
+		footer .cta_block:last-of-type{@include span(4 last);}	
+		}
+
+
+
+/* Menu */
+footer .menu a{
+	color:$white;
+	display:block;
+	font-size: 20px;
+	font-weight:600;
+	margin-bottom:18px;}
+
+/* Most Popular */
+
+footer .widget_ratings-widget a{color:$white;}
+
+/* Email Form */
+
+footer form{
+	background-color:$white;
+	border:3px solid #f5f7f8;
+	padding:20px;
+	@extend .clearfix;}
+	
+	footer form > *{
+		clear:both;
+		display:block;}
+		
+	footer form label{font-weight:100;}	
+	footer form input{
+		@include border-radius(3px);
+		border:1px solid #d9d9d9;
+		margin-bottom:0;
+		padding: 8px 10px;
+		width: 100%;}
+	footer form .button{text-transform:uppercase;}
+
+/* Social Share */
+.social_share_footer{
+	background-color:$heavymetal;
+	clear:both;
+	color:$white;
+	padding: 25px 0;
+	text-align:center;}
+	.social_share_footer ul{
+		text-align:center;
+		@extend .clearfix;}
+	.social_share_footer ul li{
+		display:inline-block;
+		margin:10px;}
+	.social_share_footer ul li a{color:$white;}
+
+/* Copyright */
+.copyright{
+	background-color:$capecod;
+	clear:both;
+	color:$slate;
+	font-size:11px;
+	padding: 10px 0;
+	text-align:center;}
+.copyright a{color:$slate;}
+.copyright p{padding-bottom:0;}
+
+/* Sidebars
+***********************/
+aside{@include span(12);}
+
+		/* Larger than phablet */
+		@media (min-width: $tablet) {
+			aside{@include span(3 last);}
+			}
+
+aside h3 {
+	color:$bombay;
+	font-size: 28px;
+	 line-height: 32px;
+	margin-bottom:20px;}
+aside .widget{
+	clear:both;
+	margin-bottom:30px;}
+aside .widget a{color:$flamingo;}
+aside #menu-recipe-categories{@extend .clearfix;}
+aside #menu-recipe-categories li{
+	float:left;
+	width:48%;}
+	
+aside #menu-super-foods li a{text-transform:capitalize;}	
+aside img{@include scalepic;}
+
+/* Home (blog roll)
+***********************/	
+.home .content_column{border-bottom: none;}
+	
+.post h2 a{color:$oslo;}
+.post {
+	border-bottom: 1px dashed $bombay;
+	margin-bottom:40px;
+	padding-bottom:30px;
+	@extend .clearfix;}
+.post	.button{
+		background-color:$flamingo;
+		clear:both;
+		color:$white;
+		display:block;
+		float:left;
+		padding:10px 20px;
+		text-align:center;
+		@include border-radius(3px);}
+
+.recipe_pic {margin-bottom:20px;}
+.recipe_pic img{@include scalepic;}
+.prep_time_details{
+	color:$black;
+	 padding-bottom: 10px;}
+.prep_time{
+	border-right:1px solid $black;
+	margin-right: 5px;
+	padding-right: 10px;}
+.clock{
+	@extend .leck;
+	margin-right:20px;}
+
+span.in{@extend .leck;}
+
+/* Pagination
+***********************/
+.pagination{text-align:center;}
+.pagination a, 
+.pagination span{
+    border: none;
+	 display:inline;
+    margin: 2px;
+    padding: 3px 7px;
+    text-decoration: none;
+}
+
+.pagination a{color:$flamingo;}
+
+.pagination span{color:$oslo;}
+
+/* Non Recipe Posts
+***********************/
+.post-categories,
+.post-categories li,
+.post-categories li a{display:inline;}
+
+
+/* Recipe Archives by Category
+***********************/
+.post-type-archive .content_column,
+.archive .content_column{border-bottom: none;}
+
+/* Single Recipe
+***********************/
+.blog_meta{padding:10px 0;}
+.post_meta .dot-irecommendthis{
+	margin-bottom:0!important;
+	margin-left:20px!important;}
+.recipe_gallery{
+	margin-bottom:20px;
+	@include span(12);}
+.recipe_gallery > div{clear:both;}
+.recipe_gallery .single_thumb{margin-right:10px;}
+.recipe_gallery .slick-dots {
+	margin:10px auto;
+	text-align:center;}
+.recipe_gallery .slick-dots li{
+	display:inline-block;
+	margin:0 2px;}
+	.recipe_gallery .slick-dots li button{
+		@include border-radius(20px);
+		background-color:rgba(0,0,0,0.2);
+		height:10px;
+		padding:0;
+		text-indent: -9999px;
+		width:10px;}
+.recipe_gallery .slick-dots li.slick-active button{background-color:rgba(0,0,0,0.4);}
+.recipe-gallery .slick-track{background-color:rgba(0,0,0,0.2);}	
+
+.recipe_gallery button.slick-arrow{display:none!important;}
+
+.moxy_thoughts{@include span(12);}
+.moxy_thoughts .post_meta{padding:5px 0 20px;}
+.moxy_thoughts h3{
+	font-size:28px;
+	font-weight:normal;
+	margin-bottom:15px;
+	text-transform:capitalize;
+	@extend .leck;}
+
+.recipe_gallery .slider-for{margin-bottom:20px;}
+.recipe_gallery img{@include scalepic;}
+.recipe_details{
+	clear:both;
+	padding-top:30px;
+	@extend .clearfix;}
+.recipe_details h3{
+	font-size:28px;
+	font-weight:normal;
+	margin-bottom:15px;
+	text-transform:capitalize;
+	@extend .leck;}
+
+.ingredients{@include span(12);}
+.ingredients ul{padding-bottom:30px;}
+.ingredients li{
+	border-bottom:1px dashed $oslo;
+	padding:10px 0;}
+	.ingredients li:last-of-type{border-bottom:none;}
+
+.recipe{@include span(12);}
+.recipe ol{
+	list-style-type:none;
+	margin-left:15px;
+	padding-bottom:30px;}
+	
+.recipe {counter-reset: my-badass-counter;}
+.recipe li {
+	position: relative;
+	padding: 6px 0 12px 50px;}
+.recipe li:before {
+	@include border-radius(20px);
+	border:1px solid $skyblue;
+	color:$skyblue;
+	content: counter(my-badass-counter);
+	counter-increment: my-badass-counter;
+	font: 12px/30px sans-serif;
+	left: 0;
+	position: absolute;
+	height:30px;
+	text-align:center;
+	top: 3px;
+	width:30px;}
+	
+	.single-recipes .content_column{border-bottom:none;}
+	.social_print{
+		border-top: 1px dashed $bombay;
+		margin-top:30px;
+		padding-top:30px;
+		@extend .clearfix;}
+	.social_print .addtoany_shortcode{
+		float:left;
+		 margin-top: 4px;}	
+	.social_print .button{	display:none;}	
+		
+.author{
+	padding:40px 0 20px;
+	@extend .clearfix;}	
+	.author h3{
+		font-size:22px;
+		margin-bottom:10px;}	
+
+	/* Larger than phablet */
+	@media (min-width: $tablet) {
+	.recipe{
+		padding-left:30px;
+		@include span(6 last);}
+		
+	.ingredients{
+		padding-right:30px;
+		@include span(6);}	
+		
+	.recipe_gallery{@include span(6);}	
+	.moxy_thoughts{@include span(6 last);}
+	.social_print .button{
+		clear:none;
+		display:block;
+		float:right;}
+		
+		
+		}
+
+
+/* Top Recipes
+***********************/
+.pagename-top-dishes h2.title{
+	padding-bottom:20px;
+	text-align:center;}
+.pagename-top-dishes .full_width	{	
+	margin-bottom:20px;
+	@extend .clearfix;}
+.top_dish {
+	margin-bottom:20px;
+	padding-bottom:0;
+	width: span(12);}
+.top_dish.item-1{clear:both;}
+.top_dish h2{
+	font-size:14px;
+	line-height:21px;}
+.top_dish img{@include border-radius(0);}	
+.top_dish .recipe_meta{padding:0 10px;}
+
+	/* Larger than phablet */
+	@media (min-width: $tablet) {
+		.top_dish {
+				border-bottom:none;
+			float:left;
+			width: span(25%);}
+		}
+
+
+/* About
+***********************/
+
+.author_details{display:flex;}
+.author_details img{
+	margin-bottom:20px;
+	margin-right:20px;}	
+
+/* FAQ
+***********************/
+
+.pagename-faq .content_column {border-bottom:none;}	 
+
+.faq li{margin-bottom:20px;}
+.question,
+.answer{padding: 10px;}
+.question .fa-minus{display:none;}
+.question.active .fa-plus{display:none;}
+.question.active .fa-minus{display:inline-block;}
+.question{
+	background-color:#f9f9f9;
+	border:1px solid #eeeeee;}	
+.answer{
+	background-color:$white;
+	border:1px solid #f0f0f0;
+	border-top:none;}	
+
+/* Contact
+***********************/
+.gform_wrapper,
+.gform_footer,
+.gform_wrapper form{@extend .clearfix;}
+body .gform_wrapper,
+body .gform_wrapper .gform_footer input.button{margin-bottom:0;}
+.pagename-contact .content_column {border-bottom:none;}
+
+/* Search Results
+***********************/
+ .search-results .content_column {border-bottom:none;}
+  .search-results .content_column article{
+  	display:inline-block;
+  	float:none;
+   margin-right: 2%;
+   width: span(47%);}
+ 
+/* Star Ratings
+***********************/ 
+body span.post-ratings-text{display:none!important;} 
+i.star-on{color:$skyblue;}
+footer i.star-on{color:$white;}
+.post-ratings img{display:inline-block;}
+
+/* Ratings Widget
+***********************/	
+.widgetwidget li{
+	clear:both;
+	display:block;
+	margin-bottom:20px;
+	@extend .clearfix;}
+.most_rated_thumb{
+ 	float: left;
+    margin-right: 10px;
+    width: 80px;}
+footer .widget .rating_details a,
+aside .widget .rating_details a{
+	display:block;
+	font-weight:600;}
+	
+
+aside .widget .rating_details a{color:$oslo;}	
+	
+.rating_details img.post-ratings-image{display:inline-block;}	
+
+
+	/* Larger than phablet */
+	@media (min-width: $tablet) {.post-ratings{margin-bottom: 3px;}}
+
+
+	/* Larger than mobile */
+	@media (min-width: $mobile-landscape) {}
+
+	/* Larger than phablet */
+	@media (min-width: $tablet) {}
+
+	/* Larger than tablet */
+	@media (min-width: $tablet-wide) {}
+
+	/* Larger than desktop */
+	@media (min-width: $desktop) {}
+
+	/* Larger than Desktop HD */
+	@media (min-width: $widescreen) {}
+	
+	
+
+@media print {
+/* PRINT
+***********************/ 
+
+body {color:$black!important;}
+.moxy_thoughts,
+nav,
+aside,
+.author,
+.social_print,
+.recipe_gallery,
+footer{display:none;}
+header{height:auto;}
+body #header-wrap{
+	background:none!important;
+	height:150px;}
+.logo{
+	display: block;
+	    float: none;
+	    margin-right: 0;
+	    margin-top: 0;
+	    width: 25%;}
+#content-wrap{padding:0;}
+body .content_column{
+	float:none;
+	margin-right:0;
+	padding:0;
+	width:100%;}
+
+	h2{
+   font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 10px;}
+	
+	
+.recipe_details {padding-top: 0;}	
+	}
